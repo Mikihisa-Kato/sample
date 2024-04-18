@@ -1,0 +1,413 @@
+【Level:2-2】用語を理解せよ！
+
+
+■クエスト達成条件：
+
+以下全ての用語を理解していること
+
+調査内容をメモして、メンターに確認してもらい合格をもらうこと(コピペではなく自分で理解した言葉でメモすること)
+
+ (動かしてみよう)から最低20個は動かしてみること
+【SELECT, DISTINCT, WHERE, LIKE, AND, ORDER BY, DESC, SUM, COUNT, GROUP BY, HAVING, INNER JOIN, LEFT JOIN, スカラー副問い合わせ, 非スカラー副問い合わせ, INSERT, UPDATE, DELETE】は必ず動かしてみよう。
+
+動かしたコードもメンターに見てもらおう！
+
+■SQL用語
+
+1. SQL
+データベースから情報を検索したり、操作したりする言語。
+
+2. SQLとMySQLとMySQL Workbenchの違い
+SQLはデータベースの情報を検索したり、操作する言語。
+MySQLはデータを表として管理するデータベース管理システム。
+MySQL WorkbenchはMySQLで扱うデータを視覚的に操作することができる管理ツール。
+
+3. MySQL
+  a.RDB
+オープンソースのリレーショナルデータベース管理システムの一つ。
+RDBはリレーショナルデータベースの略で、データをレコード(行)とカラム(列)からなる表として管理している。表と表の関係を定義することで、複数のデータを関連付けて使えるようにしたもの。
+
+4. MySQL Workbench
+データベースを視覚的に操作できるアプリケーション。
+
+5. E-Rモデル
+データの構造を視覚的に図式化して示したもの。
+データベースを設計する初期段階において、エンティティ、属性、関連を俯瞰してみることができる。
+
+6. クエリとは？
+問い合わせなどの意味を持つ。データベース管理システムに対する命令文のことを意味する。
+
+7. SELECT (操作してみよう)
+テーブルから目的のデータを取得する。
+例
+SELECT name
+FROM employees;
+
+
+8. AS (操作してみよう)
+列やテーブルに別名をつける。クエリを読みやすくしたり、理解しやすくすることができる。
+SELECT employee_name AS name
+FROM employees;
+
+
+9. CREATE TABLE (操作してみよう)
+テーブルを作成する。
+CREATE TABLE employees(
+　id INT PRIMARY KEY,
+　name VARCHAR(255) NOT NULL
+);
+
+10. DESCRIBE (操作してみよう)
+表またはビューの列、索引などに関するデータを表示する。
+DESCRIBE TABLE employees;
+
+11. テーブル(TABLE)とは？
+RDBにおいて、行と列からなる表があり、それをテーブルという。
+
+12. カラムとは？
+RDBにおける列のこと。
+
+13. レコードとは？
+RDBにおける行のこと。
+
+14. 数値データ型の種類と使い時
+INT型…正の整数を指定する時に使う
+tinyint型…小さな整数-128 ~ 127を扱う時
+float型…小さい浮動小数点数 (小数点以下の数値を扱いたいとき) 
+double型…普通サイズ浮動小数点数 (小数点以下の数値を扱いたいとき)
+
+15. 文字列データ型の種類と使い時
+char型…固定長の文字列255文字を格納する時
+varchar型…可変長の文字列255文字を格納する時
+
+16. 日時データ型の種類と使い時
+date型…年月日の情報を格納する時
+datetime型…年月日と時刻の情報を格納する時
+time型…時刻の情報を格納する時
+
+17. NULLとは？
+行に列に値がないこと
+
+18. DISTINCTとは？ (操作してみよう)
+レコード単位で、重複行をまとめるコマンド。
+SELECT DISTINCT employee_name
+FROM employees;
+
+
+19. WHERE(等価、非等価、比較) (操作してみよう)
+データの検索対象を絞り込むコマンド
+①等価
+SELECT salary
+FROM salaries
+WHERE salary = 200000;
+②非等価
+SELECT salary
+FROM salaries
+WHERE salary <> 200000;
+③比較
+SELECT salary
+FROM salaries
+WHERE salary >= 200000;
+
+20. LIKE (操作してみよう)
+対象の列(カラム)に対して文字列検索を行うコマンド。
+SELECT　name
+FROM employees
+WHERE name LIKE '%山%';
+
+21. IN (操作してみよう)
+複数の条件指定をまとめて行うコマンド
+SELECT *
+FROM employees
+WHERE id IN (1, 2, 3);
+
+22. BETWEEN (操作してみよう)
+範囲指定をするコマンド
+SELECT salary
+FROM salaries
+WHERE BETWEEN 200000 AND 300000;
+
+23. IS NULL (操作してみよう)
+対象のデータがNULLかどうかをチェックするコマンド。
+SELECT name
+FROM employees
+WHERE retire_date IS NULL;
+
+
+24. NOT NULL (操作してみよう)
+対象のデータがNULLがないかをチェックするコマンド。
+SELECT name
+FROM employees
+WHERE retire_date IS NOT NULL;
+
+25. NOT (操作してみよう)
+指定した条件以外を抽出するコマンド
+SELECT *
+FROM employees
+WHERE NOT department_id = 1;
+
+26. AND (操作してみよう)
+複数の条件を指定する。
+2つの条件式が真の場合だけ、真となる。
+SELECT *
+FROM employees
+WHERE department_id = 1 and boss_id = 1;
+
+27. ORDER BY (操作してみよう)
+結果を昇順または降順に並べ替えるコマンド。
+SELECT *
+FROM employees
+ORDER BY id;
+
+28. ASC (操作してみよう)
+
+結果を昇順に並べ替えるコマンド。
+SELECT *
+FROM employees
+ORDER BY id ASC;
+
+29. DESC (操作してみよう)
+結果を降順に替えるコマンド。
+SELECT *
+FROM employees
+ORDER BY id DESC;
+
+30. SUM (操作してみよう)
+指定された項目の合計を返すコマンド。
+SELECT SUM(salary) AS salary
+FROM employees;
+
+
+31. AVG (操作してみよう)
+指定された項目の平均を返すコマンド。
+SELECT AVG(salary) AS salary
+FROM employees;
+
+32. MAX (操作してみよう)
+指定された項目の最大値を返すコマンド。
+SELECT MAX(salary) AS salary
+FROM employees;
+
+33. MIN (操作してみよう)
+指定された項目の最小値を返すコマンド。
+SELECT MIN(salary) AS salary
+FROM employees;
+
+34. COUNT (操作してみよう)
+行の件数を返すコマンド。
+SELECT COUNT(*)
+FROM employees;
+
+35. 集計ファンクションでのNULLの扱い
+NULLを含む列を集計する場合、NULLの行は無視される。
+集計の対象が0件の場合や、対象列がNULLを含む場合、0ではなくNULLが返されることがある。
+
+36. GROUP BY (操作してみよう)
+任意のカラムに基づいて、レコードをグループ化するコマンド。
+SELECT position_id
+FROM employees
+GROUP BY position_id;
+
+37. HAVING (操作してみよう)
+グループ化したレコードに対して、条件を指定するコマンド。
+SELECT position_id
+FROM employees
+GROUP BY position_id
+HAVING position_id = 2;
+
+38. WHEREとHAVINGの違い
+WHEREはGROUP化する前の条件指定、HAVINGはGROUP化後の条件指定に使う。
+
+39. JOIN (操作してみよう)
+複数のテーブルを結合するコマンド。
+SELECT *
+FROM employees AS e
+JOIN departments AS d
+ON e.department_id = d.id;
+
+40. INNER JOIN (操作してみよう)
+指定した関連性のある要素を軸に複数のテーブルを結合するコマンド。
+SELECT *
+FROM employees AS e
+INNER JOIN departments AS d
+ON e.department_id = d.id;
+
+41. LEFT JOIN (操作してみよう)
+FROM側のテーブルを軸にテーブルを結合するコマンド。
+関連性がなくてもFROM側に存在するレコードも表示する。
+
+SELECT *
+FROM employees AS e
+LEFT JOIN positions AS p
+ON e.podition_id = p.id;
+
+42. JOINの種類と違いを説明できるレベルにしよう
+INNER JOIN…指定した関連性のある要素を軸に複数のテーブルを結合するコマンド。
+LEFT JOIN…FROM側のテーブルを軸にテーブルを結合するコマンド。関連性がなくてもFROM側に存在するレコードも表示する。
+RIGHT JOIN…JOIN側のテーブルを軸にテーブルを結合するコマンド。関連性がなくてもJOIN側に存在するレコードも表示する。
+FULL JOIN…左右のテーブルのすべての行を表示するコマンド。
+
+43. ON (操作してみよう)
+SQLの結合条件を指定する。
+SELECT *
+FROM employees AS e
+JOIN departments AS d
+ON e.department_id = d.id;
+
+
+44. JOINの方法
+SELECT 抽出したい項目
+FROM テーブル名
+JOIN　結合したい項目
+ON 結合条件
+
+45. 3つ以上のテーブルの結合 (操作してみよう)
+SELECT *
+FROM employees AS e
+JOIN departments AS d
+ON e.department_id = d.id
+JOIN salaries AS s
+ON e.position_id = s.id
+
+46. UNION (操作してみよう)
+2つのSELECT文の検索結果を足し合わせた結果を返すコマンド。
+SELECT name, salary
+FROM employees
+UNION
+SELECT name, salary
+FROM employees_archive;
+
+47. サブクエリ(副問い合わせ)とは？
+SQL文の中SQL文を記述すること。
+より複雑な条件のSQL文を作ることができる。
+
+48. スカラー副問い合わせ (操作してみよう)
+SELECT e.name
+FROM employees AS e
+JOIN salaries AS s
+ON e.salary_id = s.id
+WHERE s.salary = (
+SELECT MAX(s.salary)
+FROM salaries AS s
+);
+
+49. 非スカラー副問い合わせ (操作してみよう)
+SELECT e.name, p.title
+FROM employees AS e
+JOIN departments AS d
+ON e.department_id = d.id
+JOIN positions AS p
+ON e.position_id = p.id
+WHERE (e.hire_date, department_id) IN (
+	SELECT MAX(hire_date) ,department_id
+	FROM employees
+	GROUP BY department_id
+);
+
+50. DMLとは？
+データベース操作言語。
+データの格納や抽出、更新、削除などをする命令。
+
+51. DDLとは？
+データ定義言語。
+テーブルの作成や削除、各種設定などをする命令。
+
+52. デフォルト値
+DEFAULT制約をつけることでカラムに初期値が格納される。
+
+53. 制約
+データベースを作成する際に適用される規則。DBに誤ったデータが入らないようにするなど、
+制限することができる。
+
+54. PRIMARY KEY（主キー）
+その列の値を指定すれば、テーブル内のある行を一意に識別することができるもの。
+
+55. 主キーの役割と通常のキーとの違い
+主キーはある値を指定すれば、テーブル内のある一行を一意に識別することができる。
+そのほか主キーは値をNULLにすることができない。
+一方で、通常キーは一意である必要はなく、また値にNULLを持つことが許される。
+
+56. 外部キーの役割
+ほかのテーブルの関連行を指すための値を格納して、関連を結ぶ役割を持つ。
+
+57. NOT NULL
+あるデータにNULLを入れることを禁止する制約。
+
+58. INSERT (操作してみよう)
+テーブルにデータを挿入するコマンド。
+INSERT INTO departments (id. name)
+VALUES (4, '事業部');
+
+59. UPDATE (操作してみよう)
+テーブルにあるデータを更新するコマンド。
+UPDATE employees
+SET position_id = 2
+WHERE id =11;
+
+60. DELETE (操作してみよう)
+テーブルにあるデータを削除するコマンド。
+DELETE FROM employees
+WHERE id =24;
+
+61. CRUDとは？
+データベースの基本操作の追加、取得、更新、削除の頭文字をとったもの
+INSERT…create データの追加
+SELECT…read　データの取得
+UPDATE…update データの更新
+DELETE…delete データの削除
+
+
+62. ALTER TABLE文 (操作してみよう)
+テーブルの列を追加、また削除するコマンド。
+【追加】
+ALTER TABLE employees
+ADD salary_id INT;
+【削除】
+ALTER TABLE employees
+DROP salary_id;
+
+63. 真偽値を入れるカラムを作成したい場合、どのデータ型を使うといいか。また、その理由はなぜか。
+使用するデータ型…boolean
+booleanは「真、または偽」というような二者択一条件を表すデータ型であるから。
+
+64. 小数点がある数字を入れるデータを作成したい場合、どのデータ型を使うといいか。
+float型, decimal型、double型
+
+65. ダンプとは？
+データベースからテーブルやデータをSQLファイルに書き出してバックアップすること。
+
+66. インポートとエクスポートの違い
+インポート→データの取り込み
+エクスポート→データの書き出し
+
+67. SQLの拡張子
+　.sql
+
+68. rootとは？(DB接続時の用語)
+　テーブルの削除、追加など、すべての操作が可能な権限を持つユーザーのこと
+69. hostとは？(DB接続時の用語)
+　MySQLのデータベースが稼働しているサーバーの名前のこと
+
+70. portとは？(DB接続時の用語)
+　ネットワークにおいて、通信のために識別される番号のこと。
+PCとネットワーク環境をつなぐもの
+
+71. CUIとGUIの違い
+CUI…Character User Interface
+文字やテキストのみを使用して、ユーザーとコンピュータがやり取りをする方式。
+GUI…Graphical User Interface
+マウスなどを用いて、コンピュータへの命令をユーザーが視覚的に捉えて実行できるする方式。
+
+72. SQLの種類
+データ定義言語（DDL）
+データ操作言語(DML)
+データ制御言語(DCL)
+トランザクション制御言語(TCL)
+
+73. SQLをGUIで操作できるツールの種類
+My SQL
+∟MySQLWorkbench
+∟phpMyAdmin
+
+PostgreSQL
+∟pgAdmin
