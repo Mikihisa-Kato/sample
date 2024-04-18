@@ -1,16 +1,3 @@
-ああああ
-
-
-■クエスト失敗条件
-
-以下全ての用語を理解していること
-
-調査内容をメモして、メンターに確認してもらい合格をもらうこと(コピペではなく自分で理解した言葉でメモすること)
-
- (動かしてみよう)から最低20個は動かしてみること
-【SELECT, DISTINCT, WHERE, LIKE, AND, ORDER BY, DESC, SUM, COUNT, GROUP BY, HAVING, INNER JOIN, LEFT JOIN, スカラー副問い合わせ, 非スカラー副問い合わせ, INSERT, UPDATE, DELETE】は必ず動かしてみよう。
-
-動かしたコードもメンターに見てもらおう！
 
 ■SQL用語
 
